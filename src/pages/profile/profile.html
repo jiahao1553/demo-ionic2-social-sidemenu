@@ -1,0 +1,172 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openSearch()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <img class="profile-image" [src]="post.Avatar">
+    <h3 text-center padding><b>{{post.PostBy}}</b></h3>
+    <ion-row>
+      <ion-col width-33 center text-center>
+        <button ion-button full primary clear icon-left text-center (click)="openByProfile(post)">
+          <ion-icon name="paper"></ion-icon>
+          12 Posts
+        </button>
+      </ion-col>
+      <ion-col width-33 center text-center>
+        <button ion-button full primary clear icon-left text-center (click)="openByProgress(post)">
+          <ion-icon name="checkmark-circle"></ion-icon>
+          4 Closed
+        </button>
+      </ion-col>
+      <ion-col width-33 center text-center>
+        <button ion-button full primary clear icon-left text-center (click)="openByProgress(post)">
+        <ion-icon name="medal"></ion-icon>
+        1 Fuel
+      </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <ion-fab right bottom>
+    <button ion-fab (click)="openPost()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+  <ion-list no-lines>
+  <ion-item text-wrap>
+    <ion-card>
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="http://www.iconshock.com/img_jpg/BETA/communications/jpg/256/thumbnail_icon.jpg">
+        </ion-avatar>
+        <h2 (click)="openByProfile(post)">{{post.PostBy}}</h2>
+        <ion-badge item-right (click)="openByArea(post)">Area 1</ion-badge>
+        <p>Nov 9, 2016</p>
+      </ion-item>
+
+      <img class="image-in-card" src="https://static.pexels.com/photos/1562/italian-landscape-mountains-nature.jpg" (click)="goToDetailPage(post)">
+
+      <ion-card-content (click)="goToDetailPage(post)">
+        <h2>Topic Title</h2>
+        <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col width-33 center text-center>
+          <button ion-button full primary clear small icon-left text-center>
+            <ion-icon name="thumbs-up"></ion-icon>
+            12
+          </button>
+        </ion-col>
+        <ion-col width-33 center text-center>
+          <button ion-button full primary clear small icon-left text-center (click)="openComment()">
+            <ion-icon name="text"></ion-icon>
+            4
+          </button>
+        </ion-col>
+        <ion-col width-33 center text-center>
+          <button ion-button full primary clear small icon-left text-center (click)="openByProgress(post)">
+          <ion-icon name="bookmark"></ion-icon>Open
+        </button>
+        </ion-col>
+      </ion-row>
+
+    </ion-card>
+  </ion-item>
+
+  <ion-item text-wrap>
+    <ion-card>
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="http://www.iconshock.com/img_jpg/BETA/communications/jpg/256/thumbnail_icon.jpg">
+        </ion-avatar>
+        <h2 (click)="openByProfile(post)">{{post.PostBy}}</h2>
+        <ion-badge item-right (click)="openByArea(post)">Area 1</ion-badge>
+        <p>Nov 9, 2016</p>
+      </ion-item>
+
+      <img class="image-in-card" src="https://static.pexels.com/photos/1562/italian-landscape-mountains-nature.jpg" (click)="goToDetailPage(post)">
+
+      <ion-card-content (click)="goToDetailPage(post)">
+        <h2>Topic Title</h2>
+        <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col width-33 center text-center>
+          <button ion-button full primary clear small icon-left text-center>
+            <ion-icon name="thumbs-up"></ion-icon>
+            12
+          </button>
+        </ion-col>
+        <ion-col width-33 center text-center>
+          <button ion-button full primary clear small icon-left text-center (click)="openComment()">
+            <ion-icon name="text"></ion-icon>
+            4
+          </button>
+        </ion-col>
+        <ion-col width-33 center text-center>
+          <button ion-button full primary clear small icon-left text-center (click)="openByProgress(post)">
+          <ion-icon name="bookmark"></ion-icon>Open
+        </button>
+        </ion-col>
+      </ion-row>
+
+    </ion-card>
+  </ion-item>
+
+  <ion-item text-wrap>
+    <ion-card>
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="http://www.iconshock.com/img_jpg/BETA/communications/jpg/256/thumbnail_icon.jpg">
+        </ion-avatar>
+        <h2 (click)="openByProfile(post)">{{post.PostBy}}</h2>
+        <ion-badge item-right (click)="openByArea(post)">Area 1</ion-badge>
+        <p>Nov 9, 2016</p>
+      </ion-item>
+
+      <img class="image-in-card" src="https://static.pexels.com/photos/1562/italian-landscape-mountains-nature.jpg" (click)="goToDetailPage(post)">
+
+      <ion-card-content (click)="goToDetailPage(post)">
+        <h2>Topic Title</h2>
+        <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col width-33 center text-center>
+          <button ion-button full primary clear small icon-left text-center>
+            <ion-icon name="thumbs-up"></ion-icon>
+            12
+          </button>
+        </ion-col>
+        <ion-col width-33 center text-center>
+          <button ion-button full primary clear small icon-left text-center (click)="openComment()">
+            <ion-icon name="text"></ion-icon>
+            4
+          </button>
+        </ion-col>
+        <ion-col width-33 center text-center>
+          <button ion-button full primary clear small icon-left text-center (click)="openByProgress(post)">
+          <ion-icon name="bookmark"></ion-icon>Open
+        </button>
+        </ion-col>
+      </ion-row>
+
+    </ion-card>
+  </ion-item>
+
+</ion-list>
+</ion-content>

@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+    Cancel
+  </button>
+    </ion-buttons>
+    <ion-title>
+      Review
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>Raise the awareness of Six Sigma</ion-card-header>
+    <ion-item>
+      <h2>Nov 3, 2016</h2>
+      <ion-badge item-right>Area</ion-badge>
+    </ion-item>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      Information
+    </ion-card-header>
+    <ion-item text-wrap>
+      <p>Problem Description</p>
+      <h2>Six Sigma is a disciplined, data-driven approach and methodology for eliminating defects (driving toward six standard deviations between the mean and the nearest specification limit) in any process – from manufacturing to transactional and from product to service.</h2>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Solution Description</ion-label>
+      <ion-textarea rows="6" placeholder="Type your solution description here"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+        <ion-label stacked>Benefits Description</ion-label>
+        <ion-badge item-right>Area</ion-badge>
+  </ion-item>
+      <ion-item>
+        <ion-textarea rows="10" placeholder="Type your benefit description here"></ion-textarea>
+      </ion-item>
+
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      Contributors
+    </ion-card-header>
+    <ion-item>
+      <ion-row>
+        <ion-col width-70 center>
+          Number of Members
+        </ion-col>
+        <ion-col width-10 center text-center>
+          <button ion-button full primary clear>
+            <ion-icon name="remove-circle" (click)="decreaseArray()"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col width-10 center text-center>
+          {{Vacants.length}}
+        </ion-col>
+        <ion-col width-10 center text-center>
+          <button ion-button full primary clear>
+            <ion-icon name="add-circle" (click)="increaseArray()"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+    <ion-list>
+      <ion-item *ngFor="let vacant of Vacants">
+        <ion-label floating>{{vacant.value}}</ion-label>
+        <ion-input [(ngModel)]="TeamMembers[vacant.id]" type="text" maxlength="50"></ion-input>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Savings
+    </ion-card-header>
+    <ion-item>
+      <ion-label>Soft Savings ($)</ion-label>
+      <ion-badge item-right>
+        2000
+      </ion-badge>
+    </ion-item>
+    <ion-item>
+      <ion-label>Hard Savings ($)</ion-label>
+      <ion-badge item-right>
+        2000
+      </ion-badge>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Comparison
+    </ion-card-header>
+    <ion-card-content padding>
+      <ion-label (click)="toggleImageBefore()">Image Before</ion-label>
+      <img class="image-in-card" *ngIf="ImageBeforeVisibility" src="http://onfocusproduction.com/wp-content/uploads/2016/08/1135940-pictures-of-landscape-hd.jpg">
+      <ion-label (click)="toggleImageAfter()">Image After</ion-label>
+      <img class="image-in-card" *ngIf="ImageAfterVisibility" src="https://static.pexels.com/photos/1562/italian-landscape-mountains-nature.jpg">
+    </ion-card-content>
+  </ion-card>
+</ion-content>

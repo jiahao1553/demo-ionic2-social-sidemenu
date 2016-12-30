@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+  <ion-buttons start>
+  <button ion-button (click)="dismiss()">
+    <!--span color="primary" showWhen="ios">Cancel</span>
+    <ion-icon name="md-close" showWhen="android,windows"></ion-icon-->
+    Cancel
+  </button>
+</ion-buttons>
+  <ion-title>
+      Comments
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list padding no-lines>
+      <ion-item text-wrap>
+        <ion-avatar item-left>
+          <img src="http://img.kpopmap.com/2016/01/sm-rookies-kun-profile.jpg">
+        </ion-avatar>
+        <p>Buttons are simple components in Ionic. They can consist of text and icons and be enhanced by a wide range of attributes.</p>
+      </ion-item>
+
+      <ion-item text-wrap>
+        <ion-avatar item-left>
+          <img src="http://www.iconshock.com/img_jpg/BETA/communications/jpg/256/thumbnail_icon.jpg">
+        </ion-avatar>
+        <p>Buttons are simple components in Ionic. They can consist of text and icons and be enhanced by a wide range of attributes.</p>
+      </ion-item>
+
+      <ion-item text-wrap>
+        <ion-avatar item-left>
+          <img src="http://admissions.berkeley.edu/sites/default/files/UCB_landingpage_images_600x300_212.jpg">
+        </ion-avatar>
+        <p>Buttons are simple components in Ionic. They can consist of text and icons and be enhanced by a wide range of attributes.</p>
+      </ion-item>
+
+      <ion-item text-wrap>
+        <ion-avatar item-left>
+          <img src="https://profile.microsoft.com/RegsysProfileCenter/Images/personal_info.jpg">
+        </ion-avatar>
+        <p>Buttons are simple components in Ionic. They can consist of text and icons and be enhanced by a wide range of attributes.</p>
+      </ion-item>
+
+      <ion-item text-wrap>
+        <ion-textarea rows="6" type="text" placeholder="Type your comment here"></ion-textarea>
+        <ion-buttons item-right>
+        <button ion-button (click)="dismiss()">Send</button>
+        </ion-buttons>
+      </ion-item>
+  </ion-list>
+</ion-content>

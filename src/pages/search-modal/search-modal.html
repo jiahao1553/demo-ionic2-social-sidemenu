@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+  <ion-buttons start>
+  <button ion-button (click)="dismiss()">
+    Cancel
+  </button>
+  </ion-buttons>
+  <ion-title>
+    Search
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+<ion-searchbar></ion-searchbar>
+<ion-list>
+  <ion-list-header>
+    Filter
+  </ion-list-header>
+  <ion-item>
+    <ion-label>Area</ion-label>
+    <ion-select [(ngModel)]="Area">
+    <ion-option *ngFor="let a of Areas" [value]="a.value">{{a.value}}</ion-option>
+    </ion-select>
+</ion-item>
+  <ion-item>
+<ion-label>Progress Status</ion-label>
+  <ion-select [(ngModel)]="Progress">
+    <ion-option value="Open">Open</ion-option>
+    <ion-option value="Process">Process</ion-option>
+    <ion-option value="Closed">Closed</ion-option>
+    <ion-option value="Review">Review</ion-option>
+  </ion-select>
+</ion-item>
+<ion-item>
+<ion-label>Post Date</ion-label>
+<ion-select [(ngModel)]="StartDateUnix">
+  <ion-option value=86400>Last 24 hours</ion-option>
+  <ion-option value=259200>Last 3 days</ion-option>
+  <ion-option value=604800>Last 1 week</ion-option>
+  <ion-option value=2592000>Last 30 days</ion-option>
+  <ion-option value=5184000>Last 60 days</ion-option>
+  <ion-option value=7776000>Last 90 days</ion-option>
+</ion-select>
+</ion-item>
+<ion-item>
+  <ion-label>Search by Topic</ion-label>
+  <ion-checkbox item-right [(ngModel)]="SearchbyTopic" ></ion-checkbox>
+</ion-item>
+<ion-item>
+  <ion-label>Search by User</ion-label>
+  <ion-checkbox item-right [(ngModel)]="SearchbyUser" ></ion-checkbox>
+</ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <h2>User name</h2>
+    <h3>Topic title</h3>
+    <ion-badge item-right>Area 1</ion-badge>
+  </ion-item>
+  <ion-item>
+    <h2>User name</h2>
+    <h3>Topic title</h3>
+    <ion-badge item-right>Area 1</ion-badge>
+  </ion-item>
+  <ion-item>
+    <h2>User name</h2>
+    <h3>Topic title</h3>
+    <ion-badge item-right>Area 1</ion-badge>
+  </ion-item>
+</ion-list>
+</ion-content>

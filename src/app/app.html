@@ -1,0 +1,30 @@
+<ion-menu [content]="content">
+  <ion-header>
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="http://sbecia.weebly.com/uploads/1/7/5/5/17553711/725781021_orig.jpg">
+        </ion-avatar>
+        <h2>{{post.PostBy}}</h2>
+        <p>Share your Ideas!</p>
+      </ion-item>
+  </ion-header>
+
+  <ion-content>
+    <button menuClose ion-item (click)="openByProfile(post)">
+      My Profile</button>
+      <button menuClose ion-item (click)="goToLogoutPage()">
+        Logout</button>
+    <ion-list no-lines>
+      <ion-list-header>
+        Areas
+      </ion-list-header>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

@@ -1,0 +1,143 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+    Cancel
+  </button>
+    </ion-buttons>
+    <ion-title>
+      Calculate Benefits
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>Raise the awareness of Six Sigma</ion-card-header>
+    <ion-item>
+      <ion-badge item-right>Area</ion-badge>
+    </ion-item>
+  </ion-card>
+  <ion-card>
+
+    <ion-item>
+      <ion-label>Benefit Category</ion-label>
+      <ion-select [(ngModel)]="BenefitCategory" (ionChange)="toggleCalculateItemVisibility(BenefitCategory)">
+        <ion-option value="qs">Quality and Safety</ion-option>
+        <ion-option value="ct">Cycle Time</ion-option>
+        <ion-option value="sr">Scrap/Rework/Waste</ion-option>
+        <ion-option value="su">Space Utilization</ion-option>
+        <ion-option value="ia">Inventory Assets</ion-option>
+        <ion-option value="oo">Others</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-card>
+
+  <ion-card *ngIf="CalculateItemVisibility">
+    <ion-card-header>
+      Savings
+    </ion-card-header>
+    <ion-item>
+      <ion-label>Soft Savings ($)</ion-label>
+      <ion-input [(ngModel)]="SoftSaving" type="number"></ion-input>
+      <ion-buttons item-right>
+        <button ion-button icon-only clear (click)="toggleSoftSavingCalculator()">
+          <ion-icon name="calculator"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-item>
+      <ion-list *ngIf="LvSoftSaving">
+          <ion-item *ngIf="LvCycleTime">
+            <ion-label>Cycle Time Saved (min)</ion-label>
+            <ion-input [(ngModel)]="CtTime" type="number" (blur)="calculate($event)"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="LvCycleTime">
+            <ion-label>People Cost/Hour ($)</ion-label>
+            <ion-input [(ngModel)]="CtCost" type="number" (blur)="calculate($event)"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="LvCycleTime">
+            <ion-label>Frequency</ion-label>
+            <ion-input [(ngModel)]="CtFreq" type="number" (blur)="calculate($event)"></ion-input>
+            <ion-select item-right placeholder="per Day" [(ngModel)]="CtFreqMultiplier" (ionChange)="toggleCalculateItemVisibility(BenefitCategory)">
+              <ion-option value="220">per Day</ion-option>
+              <ion-option value="50">per Week</ion-option>
+              <ion-option value="12">per Month</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item *ngIf="LvCycleTime">
+            <ion-label>People Benefited</ion-label>
+            <ion-input [(ngModel)]="CtPeople" type="number" (blur)="calculate($event)"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="LvScrapReworkWaste">
+            <ion-label>Unit Reduction (unit)</ion-label>
+            <ion-input [(ngModel)]="SrwUnitReduction" type="number" (blur)="calculate($event)"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="LvScrapReworkWaste">
+            <ion-label>Cost/Unit ($)</ion-label>
+            <ion-input [(ngModel)]="SrwCost" type="number" (blur)="calculate($event)"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="LvSpaceUtilization">
+            <ion-label>Space Reduced (Sqft)</ion-label>
+            <ion-input [(ngModel)]="SuSpaceReduction" type="number" (blur)="calculate($event)"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="LvSpaceUtilization">
+            <ion-label>WPS OH Suport/sqft/yr ($)</ion-label>
+            <ion-input [(ngModel)]="SuOverhead" type="number" (blur)="calculate($event)"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="LvInventoryAssets">
+            <ion-label>Quantity Reduced (Unit)</ion-label>
+            <ion-input [(ngModel)]="IaQuantity" type="number" (blur)="calculate($event)"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="LvInventoryAssets">
+            <ion-label>Cost/Unit ($)</ion-label>
+            <ion-input [(ngModel)]="IaCost" type="number" (blur)="calculate($event)"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="LvOthers">
+            <ion-label>Cost Saved ($)</ion-label>
+            <ion-input [(ngModel)]="OoTotal" type="number" (blur)="calculate($event)"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="LvOthers">
+            <ion-label>Note</ion-label>
+            <ion-input [(ngModel)]="OoNotes" type="text"></ion-input>
+          </ion-item>
+        </ion-list>
+    <ion-item>
+      <ion-label>Hard Savings ($)</ion-label>
+      <ion-input [(ngModel)]="HardSaving" type="number"></ion-input>
+      <ion-buttons item-right>
+        <button ion-button icon-only clear (click)="toggleHardSavingCalculator()">
+          <ion-icon name="calculator"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-item>
+    <ion-list *ngIf="LvHardSaving">
+      <ion-item>
+        <ion-label>Employee Cost Reduced ($)</ion-label>
+        <ion-input [(ngModel)]="HsPeopleCost" type="number" (blur)="calculate($event)"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Overtime Cost Reduced ($)</ion-label>
+        <ion-input [(ngModel)]="HsOvertime" type="number" (blur)="calculate($event)"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Temp Worker Cost Reduced ($)</ion-label>
+        <ion-input [(ngModel)]="HsPeopleCost" type="number" (blur)="calculate($event)"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Scrap/Rework/Waste Cost Reduced ($)</ion-label>
+        <ion-input [(ngModel)]="HsSrw" type="number" (blur)="calculate($event)"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Others ($)</ion-label>
+        <ion-input [(ngModel)]="HsPeopleCost" type="number" (blur)="calculate($event)"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Notes for Others</ion-label>
+        <ion-input [(ngModel)]="HsNotes" type="text"></ion-input>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-fab right bottom>
+    <button ion-fab (click)="goToReviewPage()"><ion-icon name="trophy"></ion-icon></button>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,65 @@
+<!-- To make a navbar with menu on left, title on center and search button on right -->
+<ion-header>
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>
+      {{title}}
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openSearch()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab right bottom (click)="openPost()">
+    <button ion-fab><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+  <ion-row responsive-sm wrap>
+      <ion-col *ngFor="let p of post">
+    <ion-card>
+      <ion-item>
+        <ion-avatar item-left>
+          <img [src]="p.Avatar">
+        </ion-avatar>
+        <h2 (click)="openByProfile(p)">{{p.PostBy}}</h2>
+        <ion-badge item-right (click)="openByArea(p)">{{p.Area}}</ion-badge>
+        <p>{{p.PostOn}}</p>
+      </ion-item>
+
+      <!-- <img class="image-in-card" [src]="p.Image" (click)="goToDetailPage(p)"> -->
+
+      <ion-card-content (click)="goToDetailPage(p)">
+        <h2>{{p.Topic}}</h2>
+        <p>{{p.Description}}</p>
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col width-33 center text-center>
+          <button ion-button full primary clear small icon-left text-center>
+            <ion-icon name="thumbs-up"></ion-icon>
+            {{p.Likes}}
+          </button>
+        </ion-col>
+        <ion-col width-33 center text-center>
+          <button ion-button full primary clear small icon-left text-center (click)="openComment()">
+            <ion-icon name="text"></ion-icon>
+            {{p.Comments}}
+          </button>
+        </ion-col>
+        <ion-col width-33 center text-center>
+          <button ion-button full primary clear small icon-left text-center (click)="openByProgress(p)">
+          <ion-icon name="bookmark"></ion-icon>{{p.Progress}}
+        </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-col>
+</ion-row>
+</ion-content>

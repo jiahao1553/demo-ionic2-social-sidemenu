@@ -1,0 +1,92 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{post.Topic}}</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openSearch()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item>
+      <ion-avatar item-left>
+        <img [src]="post.Avatar">
+      </ion-avatar>
+      <h2 (click)="openByProfile(post)">{{post.PostBy}}</h2>
+      <ion-badge item-right (click)="openByArea(post)">{{post.Area}}</ion-badge>
+      <p>{{post.PostOn}}</p>
+    </ion-item>
+
+    <img class="image-in-card" [src]="post.Image">
+
+    <ion-card-content>
+      <h2>{{post.Topic}}</h2>
+      <p>{{post.Description}}</p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col width-50 center text-center>
+        <button ion-button full primary clear small icon-left text-center>
+          <ion-icon name="thumbs-up"></ion-icon>
+          {{post.Likes}}
+        </button>
+      </ion-col>
+      <ion-col width-50 center text-center>
+        <button ion-button color="danger" full primary clear small icon-left text-center (click)="selectProgress()">
+        <ion-icon name="bookmark"></ion-icon>{{post.Progress}}
+      </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+      <ion-list no-lines>
+        <ion-list-header>
+          Ideas
+        </ion-list-header>
+        <ion-item text-wrap>
+          <ion-card>
+            <ion-item>
+              <ion-avatar item-left>
+                <img [src]="post.Avatar">
+              </ion-avatar>
+              <h2 (click)="openByProfile(post)">{{post.PostBy}}</h2>
+              <p>{{post.Description}}</p>
+            </ion-item>
+            <ion-item>
+              <ion-avatar item-right>
+                <img [src]="post.Avatar">
+              </ion-avatar>
+              <h2 (click)="openByProfile(post)">{{post.PostBy}}</h2>
+              <p>Due on: {{post.PostOn}}</p>
+              <p>{{post.Description}}</p>
+            </ion-item>
+          </ion-card>
+        </ion-item>
+      </ion-list>
+
+
+        <ion-list *ngIf="YourActionVisibility">
+          <ion-list-header>
+            Your Action
+          </ion-list-header>
+            <ion-textarea rows="6" placeholder="enter long description here..."></ion-textarea>
+            <ion-item >
+              <ion-label>Complete by</ion-label>
+              <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="CompletionDate"></ion-datetime>
+              </ion-item>
+              <!-- <ion-buttons item-right> -->
+                <ion-buttons>
+                <button block ion-button (click)="goBack()">Send</button>
+              </ion-buttons>
+        </ion-list>
+
+  <ion-fab right bottom *ngIf="CalculateVisibility">
+    <button ion-fab (click)="openCalculate()"><ion-icon name="calculator"></ion-icon></button>
+  </ion-fab>
+</ion-content>
